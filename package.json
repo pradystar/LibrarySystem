@@ -1,0 +1,16 @@
+{
+  "name": "northenlights",
+  "version": "0.0.1",
+  "description": "Library project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "prady",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.1",
+    "mysql": "^2.13.0",
+    "pug": "^2.0.0-beta11"
+  }
+}
