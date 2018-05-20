@@ -1,0 +1,49 @@
+html
+  head
+    title= title
+    script( src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' )
+    link(href='//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/flatly/bootstrap.min.css', rel='stylesheet')
+
+  //body(style='margin: 10')
+  //- div(class='jumbotron' style='display: block;margin-bottom: 2; padding-top: 15px; padding-bottom: 15px; background-color: rgba(4, 4, 5, 1); text-align: center; font-size: 25;font-family: impact; color: rgba(34, 102, 34, 1); letter-spacing: 7px')
+  //-   |some library!!
+  nav(class='navbar navbar-inverse navbar-fixed-top' style='background-color: rgba(4, 4, 5, 1); margin:0')
+    div(class='navbar-header' style='display: block; text-align: center; font-size: 25;font-family: impact; color: rgba(201, 102, 34, 1); letter-spacing: 7px')
+        a(class='navbar-brand') library!!!
+    div(class='container-fluid')
+      ul(class='nav navbar-nav')
+        li <a href='/'><i class="glyphicon glyphicon-home">&thinsp;Home</i></a>
+        li <a href='/check_in'><i class="glyphicon glyphicon-shopping-cart">&thinsp;Check-in</i></a>
+        li <a href='/usr'><i class="glyphicon glyphicon-user">&thinsp;Borrower&ensp;Mgmt.</i></a>
+        li <a href='/fines'><i class="glyphicon glyphicon-usd">&thinsp;Fine&ensp;Mgmt.</i></a>
+  body(style='background: url(/images/lib1.jpg) no-repeat center center fixed; -webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;')
+    div(class='container' style='padding-top:65px;background-color: rgba(255, 255, 255, 0.9); height: 100%')
+      div(class='container')
+        h2 #{json[0]['TITLE']}
+        b ISBN: 
+        |#{json[0]['ISBN']}
+        br
+        b Authors: 
+        |#{json[0]['AUTHORS']}
+        br
+        b Publisher: 
+        |#{json[0]['PUB']}
+        br
+        b Pages: 
+        |#{json[0]['PG']}
+      div(class='container')
+        br
+        -if(json[0]['COPIES']!=0)
+            form(class='form-inline',method='GET', action='/check')
+                div(class='form-group')
+                    label(for='h_box') Card#  &nbsp;
+                    input(type='hidden'  class='form-control' name='isbn' value=json[0]['ISBN'])
+                    input(type='hidden'  class='form-control' name='_f' value=true)
+                    input(type = 'text'  class='form-control' id='h_box' name = '_card_num') 
+                    |&nbsp;
+                    input(type = 'submit'  class='form-control' value='Check Out') 
+        -else
+            div This book is unavailable... go to <a href='/'>HOME</a> 
+      -if(num_err!== undefined)
+          div(class='container')
+              p= num_err

@@ -1,0 +1,60 @@
+html
+    head
+        title= title
+        link( rel='stylesheet' href='//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css')
+        script( src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' )
+        script( src='//code.jquery.com/ui/1.11.1/jquery-ui.js')
+        link( href='//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/flatly/bootstrap.min.css', rel='stylesheet')
+        script( src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js' )
+    //- div(class='jumbotron' style='display: block;margin-bottom: 2; padding-top: 15px; padding-bottom: 15px; background-color: rgba(4, 4, 5, 1); text-align: center; font-size: 25;font-family: impact; color: rgba(34, 102, 34, 1); letter-spacing: 7px')
+    //-   |some library!!
+    nav(class='navbar navbar-inverse navbar-fixed-top' style='background-color: rgba(4, 4, 5, 1); margin:0')
+        div(class='navbar-header' style='display: block; text-align: center; font-size: 25;font-family: impact; color: rgba(201, 102, 34, 1); letter-spacing: 7px')
+            a(class='navbar-brand') library!!!
+        div(class='container-fluid')
+            ul(class='nav navbar-nav')
+                li <a href='/'><i class="glyphicon glyphicon-home">&thinsp;Home</i></a>
+                li <a href='/check_in'><i class="glyphicon glyphicon-shopping-cart">&thinsp;Check-in</i></a>
+                li(class='active') <a href='/usr'><i class="glyphicon glyphicon-user">&thinsp;Borrower&ensp;Mgmt.</i></a>
+                li <a href='/fines'><i class="glyphicon glyphicon-usd">&thinsp;Fine&ensp;Mgmt.</i></a>
+    body(style='background: url(/images/lib1.jpg) no-repeat center center fixed; -webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;')
+        div(class='container' style=' padding-top:65px; background-color: rgba(255, 255, 255, 0.9); overflow-y: auto; overflow-x: hidden;height: 100%')
+            div(class='container')
+                -if(cn!== undefined)
+                    p= cn 
+                        b= cn1
+                form(class='form-inline' method='GET', action="/usr")
+                    div(class='form-group')
+                        table.table(cellspacing='1')
+                            tbody
+                                tr
+                                    td
+                                        label(for='issn') SSN &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                                        input(type='text' required=true class='form-control' id='issn' name='ssn' value=dssn placeholder='Enter SSN...' size='50' maxlength='9')
+                                tr    
+                                    td
+                                        label(for='ifname') First Name &emsp;&emsp;
+                                        input(type='text' required=true class='form-control' id='ifname' name='fname' value=dfname placeholder='Enter your first name...' size='50' maxlength='250')
+                                tr
+                                    td
+                                        label(for='ilname') Last Name &emsp;&emsp;&thinsp;
+                                        input(type='text' required=true class='form-control' id='ilname' name='lname' value=dlname placeholder='Enter your last name...' size='50' maxlength='250')
+                                tr  
+                                    td
+                                        label(for='iadd') Address&emsp;&emsp;&emsp;&emsp;
+                                        input(type='text' required=true class='form-control' id='iadd' name='add' value=dadd placeholder='Enter your address...' size='50' maxlength='250')
+                                tr
+                                    td
+                                        label(for='icity') City &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                                        input(type='text' required=true class='form-control' id='icity' name='city' value=dcity placeholder='Enter city...' size='50' maxlength='250')
+                                tr
+                                    td
+                                        label(for='istate') State &emsp;&emsp;&emsp;&emsp;&emsp;&thinsp;
+                                        input(type='text' required=true class='form-control' id='istate' name='state' value=dstate placeholder='Enter state...' size='50' maxlength='250')
+                                tr
+                                    td
+                                        label(for='iphn') Phone # &emsp;&emsp;&emsp;&thinsp;&thinsp;
+                                        input(type='text' required=true class='form-control' id='iphn' name='phone' value=dphone placeholder='Enter phone #...' size='50' maxlength='12')
+                                tr
+                                    td(colspan='2' align='right') 
+                                        input(class='form-control' type='submit' value='Add User' style='width: 100px')   
